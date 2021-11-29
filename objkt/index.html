@@ -1,0 +1,230 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="pixray objkt"
+    content="Mint images straight to Tezos"
+  />
+  <meta name="description" content="Mint images straight to Tezos" />
+  <meta property="og:title" content="pixray objkt" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pixray.gob.io/objkt/" />
+  <meta property="og:image" content="https://pixray.gob.io/objkt/preview-image.png" />
+  <meta property="og:image:width" content="480" />
+  <meta property="og:image:height" content="256" />
+  <meta property="og:description" content="Mint images straight to Tezos" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="dribnet" />
+  <meta name="twitter:title" content="pixray objkt" />
+  <meta name="twitter:description" content="Mint images straight to Tezos" />
+  <meta name="twitter:image" content="https://pixray.gob.io/objkt/preview-image.png" />
+
+<!--    <script
+    type="module"
+    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+  ></script>
+
+ -->
+   <script language="javascript" type="text/javascript" src="/lib/model-viewer.min.js"></script>
+  <script language="javascript" type="text/javascript" src="/lib/p5_1.3.1.js"></script>
+  <script language="javascript" type="text/javascript" src="/lib/crc32.js"></script>
+  <script language="javascript" type="text/javascript" src="/lib/png_metadata.js"></script>
+  <script language="javascript" type="text/javascript" src="mint.js"></script>
+
+  <title>pixray objkt</title>
+
+    <style>
+        .styles_container__1q-zX,.styles_content__3YwU- {
+            opacity: 0.0 !important;
+            pointer-events: all;
+        }
+        .styles_container__3A2-N {
+            padding: 8px 20px !important;
+            pointer-events: all;
+        }
+        .styles_container__1Yt5m {
+            width: 95% !important;
+            pointer-events: all;
+        }
+        button {
+            border: none;
+            color: black;
+            padding: 8px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            background-color: #ccc;
+        }
+        button:disabled,
+        button[disabled]{
+          background-color: #e8e8e8;
+          color: #888888;
+        }        
+        h3 { text-align:center; }
+        h4 {
+          font-family:  basier_square, Helvetica, sans-serif;
+          font-size: 24px !important;
+          line-height: 35px !important;
+          text-align:center;
+          margin: 50 !important;
+        }
+        #root{ display: none!important }
+		
+        #root2,#help {
+            font: 300 18px "Helvetica Neue";
+            padding: 10; margin: 10; 
+            background: #f0f0f0;
+            opacity: 0.0;
+            display: none;
+            text-align:left;
+            -webkit-transition: opacity 0.2s ease;
+            -moz-transition: opacity 0.2s ease;
+            -o-transition: opacity 0.2s ease;
+            -ms-transition: opacity 0.2s ease;
+        }
+        #market {
+            opacity: 0.0;
+            -webkit-transition: opacity 0.2s ease;
+            -moz-transition: opacity 0.2s ease;
+            -o-transition: opacity 0.2s ease;
+            -ms-transition: opacity 0.2s ease;
+        }
+        .inner { 
+            position: absolute; 
+            z-index: 500;
+        }
+        .centerInner {
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+		
+		
+		#root2 iframe { 
+			width: 100%; min-height: 90vh;
+		}
+		#root2 {
+			position: absolute;
+			width: calc(100% - 2rem);
+			left: 1rem;
+			margin: 0;
+			padding: 2rem 1rem;
+		}
+
+/** https://stackoverflow.com/a/17508836/1010653
+ * Emulating <blink> using WebKit CSS3 animation        
+ *   This code is part of John Smith's blog
+ *
+ * Copyright 2010 by John Smith, All Rights Reserved
+ *
+ * @link   http://www.john-smith.me/emulating--lt-blink-gt--using-webkit-css3-animation
+ * @date   18th October 2010 at 11:01 p.m.
+ * @author John Smith
+ */
+@-webkit-keyframes blinker { from {opacity:1.0;} to {opacity:0.0;} }
+        @keyframes blinker { from {opacity:1.0;} to {opacity:0.0;} }
+
+.blink {
+   text-decoration:blink;
+
+  -webkit-animation-name:blinker;
+          animation-name:blinker;  
+  -webkit-animation-iteration-count:infinite;  
+          animation-iteration-count:infinite;  
+  -webkit-animation-timing-function:cubic-bezier(1.0,0,0,1.0);
+          animation-timing-function:cubic-bezier(1.0,0,0,1.0);
+  -webkit-animation-duration:4s; 
+          animation-duration:4s; 
+}
+
+    </style>
+
+</head>
+<body style="background-color:white">
+
+    <div class="outer">
+        <h4>pixray objkt minting (2ꜩ)</h4>
+        <!-- <h4 class="blink">whoops: is minting down - working on fix 🙃<blink></h4> -->
+
+        <div class="inner">
+            <div id="root" style="display: none;">
+                  <H3>MINT SCREEN HERE</H3>
+                <pre>
+    Mint is disabled, sorry.
+                </pre>
+                <center>
+                <button onclick="hideMint();">bummer</button>
+                </center>
+            </div>
+        </div>
+		
+		<div id="root2" style="display: none;">
+			<!--iframe src="https://localhost:8082/"></iframe-->
+			<iframe src="../objkt-minter/"></iframe>
+		</div>
+
+        <div class="inner centerInner" id="help" width="1024px" height="576px">
+            <H3>pixray objkt</H3>
+            <pre>
+
+🚨warning: this interface is quite wonky - watch your step!🚨
+
+An experiment in minting directly from a neural net drawing tool.
+Just give the system a title for your work, and it will draw it for you!
+It can be used with tezos currency and hic et nunc.
+Made something you like? Generate a mintable version to claim it as yours.
+Mint once or multiple times with any tezos connected wallet.
+All pieces you mint are yours to keep or swap.
+There is currently a modest mint charge of 2ꜩ to support this online platform.
+I collect no royalaties. However you as creator get 10% on resales.
+Have fun and good luck. 🤗
+
+(got more questions? <a target=”_blank” href="https://discord.gg/x2g9TWrNKe">pop in on discord</a>)
+            </pre>
+            <center>
+            <button onclick="toggleHelp();">Got it!</button>
+            </center>
+        </div>
+    </div>
+
+    <iframe src="https://replicate.com/dribnet/pixray-genesis/embed" frameborder="0" scrolling="no" height="700" width="100%"></iframe>
+
+    <!-- <h4>result</h4> -->
+
+    <div id="static_controls" style="text-align:center;">
+        <center>
+            <table>
+                <tr>
+                    <td id="ui_help">
+                      <button onclick="toggleHelp();">help</button>
+                    </td>
+                    <td id="ui_mint">
+                    </td>
+                    <td id="ui_sync">
+                    </td>
+                    <td id="ui_market">
+                      <button onclick="toggleMarket();">market</button>
+                    </td>
+                </tr>
+           </table>    
+        </center>
+    </div>
+
+<p>
+
+    <iframe display="none" id="market" src="https://objkt.com/search?fa2=KT1RJ6PbjHpwc3M5rw5s2Nbmefwbuwbdxton&search=pixray_genesis&sortBy=idDesc" frameborder="0" scrolling="no" height="1600" width="100%"></iframe>
+
+
+
+  <script src="/static/js/bundle.js"></script>
+  <script src="/static/js/vendors~main.chunk.js"></script>
+  <script src="/static/js/main.chunk.js"></script>
+
+
+</body>
